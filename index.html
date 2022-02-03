@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/movies.js"></script>
+    <script
+      src="https://kit.fontawesome.com/8b3a760ff3.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<style>
+    #container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 30px;
+    margin-top: 30px;
+}
+.box>img{
+    width: 40%;
+    /* height: 100%; */
+    height: 150px;
+    margin-right: 20px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+body{
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+.box{
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    width: 70%;
+    border-radius: 10px;
+    transition: transform .2s;
+    margin-left: 50px;
+}
+.box:hover{
+  transform: scale(1.2);
+}
+.movie_details{
+    width:55%
+}
+.movie_details p:nth-child(1){
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.movie_details p:nth-child(2){
+    font-size: 13px;
+    font-weight: bold;
+}
+.movie_details p:nth-child(3){
+    font-size: 13px;
+    font-weight: bold;
+}
+.error_box>img,.error_box>h3,.error_box>p{
+    text-align: center;
+}
+.error_box>img{
+    margin-left: 40%;
+}
+.error_box>h3{
+    margin-bottom: 0;
+}
+.error_box>p{
+    margin-top: 5px;
+}
+#searchDiv{
+    text-align: right;
+}
+#search{
+    width: 20%;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+}
+#searchDiv>i{
+    color:black;
+    position: relative;
+    right: 30px;
+    cursor: pointer;
+}
+.recommended{
+    display: flex;
+    background-color:red;
+    width: 63%;
+    padding: 3px;
+    border-radius: 15px;
+
+}
+.recommended>p{
+    margin:3px;
+}
+.recommended>i{
+    margin-left:3px;
+}
+
+
+
+</style>
+<body>
+    <div id="searchDiv">
+        <input type="text" name="search" id="search" placeholder="Search">
+        <i class="fas fa-search" onclick="searchMovie()" id="btn"></i>
+    <!-- <button onclick="searchMovie()">Search</button> -->
+    </div>
+    
+    <div id="container">
+
+
+    </div>
+    <div id="error_container">
+
+    </div>
+    
+</body>
+</html>
+<script>
+    var input = document.getElementById("search");
+    input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("btn").click();
+  }
+});
+</script>
