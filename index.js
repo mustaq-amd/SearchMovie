@@ -1,6 +1,7 @@
 
 
 function searchMovie() {
+    document.querySelector("body").style.backgroundImage = "none";
     var searchMovie = document.getElementById("search").value;
     console.log(searchMovie);
     let url = "https://www.omdbapi.com/?apikey=cb354965&s=" + searchMovie;
@@ -34,6 +35,7 @@ function searchMovie() {
 }
 
 function displaySearchMovies(searchArr) {
+    document.querySelector("body").style.backgroundImage = "none";
     document.getElementById("container").innerHTML = "";
     document.getElementById("error_container").innerHTML = "";
     console.log(searchArr);
