@@ -3,7 +3,7 @@
 function searchMovie() {
     var searchMovie = document.getElementById("search").value;
     console.log(searchMovie);
-    let url = "http://www.omdbapi.com/?apikey=cb354965&s=" + searchMovie;
+    let url = "https://www.omdbapi.com/?apikey=cb354965&s=" + searchMovie;
     let streamData = fetch(url);
     streamData.then(function (res) {
         return res.json();
