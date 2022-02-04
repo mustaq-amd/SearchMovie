@@ -82,6 +82,7 @@
     border-radius: 20px;
     outline: none;
     border: none;
+    overflow: hidden;
 }
 #searchDiv>i{
     color:black;
@@ -102,6 +103,16 @@
 }
 .recommended>i{
     margin-left:3px;
+}
+@media only screen and (max-device-width: 800px) {
+    #search{
+    width: 40%;
+    }
+    #container{
+        grid-template-columns: repeat(1,1fr);
+    }
+  
+  
 }
 
 
