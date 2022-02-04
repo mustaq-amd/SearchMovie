@@ -104,16 +104,38 @@
 .recommended>i{
     margin-left:3px;
 }
-@media only screen and (max-device-width: 800px) {
+@media only screen  and (max-device-width: 1235px) {
+    #search{
+    width: 40%;
+    }
+    #container{
+        grid-template-columns: repeat(2,1fr);
+    }
+  
+  
+}
+@media only screen and (max-device-width: 700px) {
     #search{
     width: 40%;
     }
     #container{
         grid-template-columns: repeat(1,1fr);
     }
-  
-  
+    
 }
+@media only screen and (max-device-width: 400px) {
+    .box{
+        width: 85%;
+    }
+    #container{
+        grid-template-columns: repeat(1,1fr);
+    }
+    #search{
+    width: 50%;
+    }
+    
+}
+
 
 
 
