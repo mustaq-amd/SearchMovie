@@ -79,6 +79,7 @@ function displaySearchMovies(searchArr) {
 }
 
 function displayError() {
+    document.getElementById("error_container").innerHTML = "";
     document.getElementById("container").innerHTML = "";
     let div = document.createElement("div");
     div.className = "error_box";
