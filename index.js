@@ -4,7 +4,8 @@ function searchMovie() {
     document.querySelector("body").style.backgroundImage = "none";
     var searchMovie = document.getElementById("search").value;
     console.log(searchMovie);
-    let url = "https://www.omdbapi.com/?apikey=cb354965&s=" + searchMovie;
+    let url = "https://www.omdbapi.com/?apikey=cb354965&s=" + searchMovie + "&type=movie";
+
     let streamData = fetch(url);
     streamData.then(function (res) {
         return res.json();
@@ -15,6 +16,7 @@ function searchMovie() {
             console.log("response:", res["Response"])
             if (res["Response"] == true || res["Response"] == "True") {
                 let searchArr = res["Search"];
+                console.log(searchArr);
                 displaySearchMovies(searchArr)
 
             }
