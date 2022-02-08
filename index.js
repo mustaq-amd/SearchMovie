@@ -1,6 +1,10 @@
 
 
-function searchMovie() {
+function searchMovieMain() {
+    let movies_div=document.getElementById("moviesListSearched");
+    movies_div.innerHTML=""
+    movies_div.style.display="none";
+    console.log("coming here after enter")
     document.querySelector("body").style.backgroundImage = "none";
     var searchMovie = document.getElementById("search").value;
     console.log(searchMovie);
@@ -17,7 +21,7 @@ function searchMovie() {
             if (res["Response"] == true || res["Response"] == "True") {
                 let searchArr = res["Search"];
                 console.log(searchArr);
-                displaySearchMovies(searchArr)
+                displaySearchMovies(searchArr);
 
             }
             else {
@@ -37,6 +41,10 @@ function searchMovie() {
 }
 
 function displaySearchMovies(searchArr) {
+    document.getElementById("search").value=null;
+    let movies_div=document.getElementById("moviesListSearched");
+    movies_div.innerHTML=""
+    movies_div.style.display="none";
     document.querySelector("body").style.backgroundImage = "none";
     document.getElementById("container").innerHTML = "";
     document.getElementById("error_container").innerHTML = "";
@@ -83,6 +91,9 @@ function displaySearchMovies(searchArr) {
 }
 
 function displayError() {
+    let movies_div=document.getElementById("moviesListSearched");
+    movies_div.innerHTML=null;
+    movies_div.style.display="none";
     document.getElementById("error_container").innerHTML = "";
     document.getElementById("container").innerHTML = "";
     let div = document.createElement("div");
@@ -96,4 +107,78 @@ function displayError() {
     div.append(image, info1, info2)
     document.getElementById("error_container").append(div);
 
+}
+
+
+ async function main(){
+    let data=await searchMovie();
+
+    if(data === undefined){
+        let movies_div=document.getElementById("moviesListSearched");
+        movies_div.style.display="none";
+        return false;
+    }
+    appendData(data);
+}
+
+async function searchMovie(){
+
+    try {
+        let movieName=document.getElementById("search").value;
+
+    let url= `https://www.omdbapi.com/?apikey=cb354965&s=${movieName}`;
+    let res=await fetch(url);
+    let data= await res.json();
+        
+    return data.Search;
+    
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+    
+}
+
+function appendData(movies){
+    console.log("movies: ",movies)
+    document.getElementById("moviesListSearched").innerHTML=null;
+
+    movies.map(function (item,index){
+        console.log(item);
+        let movies_div=document.getElementById("moviesListSearched");
+
+        let box=document.createElement("div");
+        let image=document.createElement("img");
+        image.id="searchImage"
+        image.setAttribute("src", item.Poster);
+        let mname=document.createElement("p");
+        mname.innerText=item.Title;
+        box.append(image,mname);
+        box.addEventListener('click',function(e){
+            e.preventDefault();
+            displaySearchMovies([item]);
+            
+            
+            })
+       movies_div.append(box);
+       movies_div.style.display="block";
+       
+    })
+
+}
+
+//  "a" --> oninput --> debounce() --> main("a") --> setTimeout(main,1000)
+//  "av" --> oninput --> debounce() --> main("av") --> setTimeout(main,1000)
+let timerId;
+// debounce
+function debounce(func,delay){
+
+    if(timerId){
+        clearTimeout(timerId);
+    }
+
+    timerId=setTimeout(function(){
+        func()
+    },delay)
 }

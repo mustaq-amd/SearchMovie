@@ -1,171 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="/index.js"></script>
     <script
       src="https://kit.fontawesome.com/8b3a760ff3.js"
       crossorigin="anonymous"
     ></script>
-</head>
-<style>
-    body{
-    padding: 10px;
-    background-color: black;
-    color: white;
-    background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/eb482c64-e879-4e88-9ddc-d839cb7d1232/d03a05fb-39a4-4594-b16c-ddc39f35f5bd/IN-en-20220131-popsignuptwoweeks-perspective_alpha_website_large.jpg");
-}
-    #container{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-gap: 30px;
-    margin-top: 30px;
-    
-}
-.box>img{
-    width: 40%;
-    /* height: 100%; */
-    height: 150px;
-    margin-right: 20px;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-}
+  </head>
+  <style>
+    body {
+      padding: 10px;
+      background-color: black;
+      color: white;
+      background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/eb482c64-e879-4e88-9ddc-d839cb7d1232/d03a05fb-39a4-4594-b16c-ddc39f35f5bd/IN-en-20220131-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+    }
+    #container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 30px;
+      margin-top: 30px;
+    }
+    .box > img {
+      width: 40%;
+      /* height: 100%; */
+      height: 150px;
+      margin-right: 20px;
+      border-bottom-left-radius: 10px;
+      border-top-left-radius: 10px;
+    }
 
-.box{
-    display: flex;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    width: 70%;
-    border-radius: 10px;
-    transition: transform .2s;
-    margin-left: 50px;
-}
-.box:hover{
-  transform: scale(1.2);
-}
-.movie_details{
-    width:55%
-}
-.movie_details p:nth-child(1){
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 5px;
-}
-.movie_details p:nth-child(2){
-    font-size: 13px;
-    font-weight: bold;
-}
-.movie_details p:nth-child(3){
-    font-size: 13px;
-    font-weight: bold;
-}
-.error_box>img,.error_box>h3,.error_box>p{
-    text-align: center;
-}
-.error_box>img{
-    margin-left: 40%;
-}
-.error_box>h3{
-    margin-bottom: 0;
-}
-.error_box>p{
-    margin-top: 5px;
-}
-#searchDiv{
-    text-align: right;
-}
-#search{
-    width: 20%;
-    padding: 10px;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    overflow: hidden;
-}
-#searchDiv>i{
-    color:black;
-    position: relative;
-    right: 30px;
-    cursor: pointer;
-}
-.recommended{
-    display: flex;
-    background-color:red;
-    width: 63%;
-    padding: 3px;
-    border-radius: 15px;
+    .box {
+      border: 1px solid #272727;
+      display: flex;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+      width: 70%;
+      border-radius: 10px;
+      transition: transform 0.2s;
+      margin-left: 50px;
+    }
+    .box:hover {
+      transform: scale(1.2);
+    }
+    .movie_details {
+      width: 55%;
+    }
+    .movie_details p:nth-child(1) {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    .movie_details p:nth-child(2) {
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .movie_details p:nth-child(3) {
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .error_box > img,
+    .error_box > h3,
+    .error_box > p {
+      text-align: center;
+    }
+    .error_box > img {
+      margin-left: 40%;
+    }
+    .error_box > h3 {
+      margin-bottom: 0;
+    }
+    .error_box > p {
+      margin-top: 5px;
+    }
+    #searchDiv {
+      text-align: right;
+      margin-right: 60px;
+    }
+    #search {
+      width: 32%;
+      padding: 10px;
+      border-radius: 20px;
+      outline: none;
+      border: none;
+      overflow: hidden;
+    }
+    #searchDiv > i {
+      color: black;
+      position: relative;
+      right: 30px;
+      cursor: pointer;
+    }
+    #moviesListSearched {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      position: absolute;
+      z-index: 2;
+      right: 92px;
+      float: right;
+      background-color: #111824;
+      height: 300px;
+      overflow: scroll;
+      border-radius: 10px;
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+    #moviesListSearched::-webkit-scrollbar {
+      width: 0; /* width of the entire scrollbar */
+    }
 
-}
-.recommended>p{
-    margin:3px;
-}
-.recommended>i{
-    margin-left:3px;
-}
-@media only screen  and (max-device-width: 1235px) {
-    #search{
-    width: 40%;
+    #moviesListSearched::-webkit-scrollbar-track {
+      background: none; /* color of the tracking area */
     }
-    #container{
-        grid-template-columns: repeat(2,1fr);
+
+    #moviesListSearched::-webkit-scrollbar-thumb {
+      background-color: blue; /* color of the scroll thumb */
+      border-radius: 20px; /* roundness of the scroll thumb */
+      border: 3px solid orange; /* creates padding around scroll thumb */
     }
-  
-  
-}
-@media only screen and (max-device-width: 700px) {
-    #search{
-    width: 40%;
+    .recommended {
+      display: flex;
+      background-color: red;
+      width: 63%;
+      padding: 3px;
+      border-radius: 15px;
     }
-    #container{
-        grid-template-columns: repeat(1,1fr);
+    .recommended > p {
+      margin: 3px;
     }
-    
-}
-@media only screen and (max-device-width: 400px) {
-    .box{
+    .recommended > i {
+      margin-left: 3px;
+    }
+    @media only screen and (max-device-width: 1235px) {
+      #search {
+        width: 40%;
+      }
+      #container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media only screen and (max-device-width: 700px) {
+      #search {
+        width: 40%;
+      }
+      #container {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    @media only screen and (max-device-width: 400px) {
+      .box {
         width: 85%;
-    }
-    #container{
-        grid-template-columns: repeat(1,1fr);
-    }
-    #search{
-    width: 50%;
-    }
-    .error_box>img {
+      }
+      #container {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      #search {
+        width: 50%;
+      }
+      .error_box > img {
         margin-left: 15%;
+      }
     }
-    
-}
-
-
-
-
-</style>
-<body>
+    #searchImage {
+      width: 50%;
+      /* height: 50px; */
+      margin-right: 10px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    #moviesListSearched > div {
+      display: flex;
+      background-color: #141b29;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      height: 90px;
+    }
+    #moviesListSearched > div:hover {
+      box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    }
+    #moviesListSearched > div > p {
+      width: 40%;
+    }
+    #searchImage :hover {
+      box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    }
+  </style>
+  <body>
     <div id="searchDiv">
-        <input type="text" name="search" id="search" placeholder="Search">
-        <i class="fas fa-search" onclick="searchMovie()" id="btn"></i>
-    <!-- <button onclick="searchMovie()">Search</button> -->
+      <input
+        oninput="debounce(main,1000)"
+        type="text"
+        name="search"
+        id="search"
+        placeholder="Search for a"
+      />
+      <i class="fas fa-search" onclick="searchMovieMain()" id="btn"></i>
+      <!-- <button onclick="searchMovie()">Search</button> -->
     </div>
-    
-    <div id="container">
+    <div id="moviesListSearched"></div>
 
-
-    </div>
-    <div id="error_container">
-
-    </div>
-    
-</body>
+    <div id="container"></div>
+    <div id="error_container"></div>
+  </body>
 </html>
 <script>
-    var input = document.getElementById("search");
-    input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("btn").click();
-  }
-});
+  var input = document.getElementById("search");
+  input.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      console.log("clciked");
+      document.getElementById("btn").click();
+    }
+  });
 </script>
